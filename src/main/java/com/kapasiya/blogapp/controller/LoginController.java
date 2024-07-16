@@ -3,23 +3,28 @@ package com.kapasiya.blogapp.controller;
 
 import com.kapasiya.blogapp.dto.UserLoginDTO;
 import com.kapasiya.blogapp.dto.UserRegisteredDTO;
+import com.kapasiya.blogapp.entities.Blog;
 import com.kapasiya.blogapp.entities.User;
 import com.kapasiya.blogapp.repository.LoginRepo;
+import com.kapasiya.blogapp.service.BlogService;
 import com.kapasiya.blogapp.service.LoginService;
-import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
 
 @Controller
 public class LoginController
 {
     @Autowired
     LoginRepo loginRepo;
+
+    @Autowired
+    BlogService blogService;
 
     @Autowired
     LoginService loginService;
@@ -47,10 +52,13 @@ public class LoginController
     }
 
     @PostMapping("/login")
-    public String loginUser(@ModelAttribute("userLogin") UserLoginDTO userLogin)
+    public String loginUser(@ModelAttribute("userLogin") UserLoginDTO userLogin,Model model)
     {
         User user = loginRepo.findByEmail(userLogin.getEmail());
 
+        List<Blog> allBlogs = blogService.getAllBlogs();
+
+        model.addAttribute("allBlogs", allBlogs);
         if(user != null && user.getPassword().equals(userLogin.getPassword()))
         {
             return "home";

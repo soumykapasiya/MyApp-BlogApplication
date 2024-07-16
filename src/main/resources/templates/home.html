@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -266,29 +266,28 @@
 <nav class="navbar">
     <h1>My App</h1>
     <ul class="nav-links">
-        <li><a href="" th:href="@{/create}"><button class="navigation-btn1">Create</button></a></li>
+        <li><a href="" th:href="@{/createBlog}"><button class="navigation-btn1">Create</button></a></li>
     </ul>
 </nav>
 
 <h1>All Blogs</h1>
 <hr />
 
-<div class="instruction-card one">
-    <h2 class="instruction-card-heading">Title</h2>
-    <p class="instruction">
-        <strong>Author:</strong> name
+<div class="instruction-card one" th:each="data : ${allBlogs}" >
+    <h2 class="instruction-card-heading" th:text="${data.title}">Title</h2>
+
+    <p class="instruction" th:text="${data.author}">
     </p>
-    <p class="instruction">
-        <strong>Email:</strong> email
-    </p>
-    <p class="instruction">
+
+    <p class="instruction" th:text="${data.topic}">
         <strong>Topic:</strong> Topic
     </p>
-    <p class="instruction">
+
+    <p class="instruction" th:text="${data.content}">
         <strong>Content:</strong> Click on the "Book Ticket" button to access the ticket booking page.
     </p>
-    <a href=""><button class="navigation-btn1">Update</button></a>
-    <a href=""><button class="navigation-btn">Delete</button></a>
+    <a th:href="@{/update/{id}(id=${data.id})}"><button class="navigation-btn1" >Update</button></a>
+    <a th:href="@{/delete/{id}(id=${data.id})}"><button class="navigation-btn" >Delete</button></a>
 
 </div>
 

@@ -4,6 +4,7 @@
 <head>
     <meta charset="ISO-8859-1">
     <link rel="stylesheet" href="/static/Css/createBlog.css">
+    <meta charset="UTF-8">
     <title>My App</title>
     <style>
         body {
@@ -11,7 +12,6 @@
             padding: 0;
             font-family: 'Poppins', sans-serif;
         }
-
 
         /* Navbar */
         .navbar {
@@ -42,7 +42,6 @@
         .nav-links a {
             text-decoration: none;
             color: #000;
-            /* Changed text color to black */
             position: relative;
         }
 
@@ -52,7 +51,6 @@
             width: 0;
             height: 3px;
             background-color: crimson;
-            /* Changed line color to black */
             position: absolute;
             bottom: -5px;
             left: 0;
@@ -64,12 +62,7 @@
             left: 0;
         }
 
-
-
-
-
-        /* popup */
-
+        /* Popup */
         .popup {
             position: fixed;
             top: 50%;
@@ -89,12 +82,7 @@
             font-size: 16px;
         }
 
-
-
-
-
-        /* form */
-        /* booking form */
+        /* Form */
         .booking-form {
             width: 40%;
             padding: 40px;
@@ -133,8 +121,7 @@
 
         .booking-form input,
         .booking-form textarea {
-            font-family: poppins;
-            /* width: calc(100% - 32px) !important; */
+            font-family: 'Poppins', sans-serif;
             width: 100%;
             padding: 12px 16px;
             border-radius: 4px;
@@ -149,7 +136,7 @@
             cursor: pointer;
             margin-top: 20px;
             align-self: center;
-            font-family: poppins;
+            font-family: 'Poppins', sans-serif;
             font-size: 17px;
             width: 150px;
             height: 40px;
@@ -172,27 +159,9 @@
         .booking-form hr {
             color: crimson;
         }
-
-        .button{
-            padding: 14px 28px;
-            cursor: pointer;
-            margin-top: 20px;
-            align-self: center;
-            font-family: poppins;
-            font-size: 17px;
-            width: 150px;
-            height: 40px;
-            padding: 0;
-            border: none;
-            border-radius: 5px;
-            background-color: crimson;
-            color: #fff;
-            cursor: pointer;
-            border: 2px solid crimson;
-            transition: background-color 0.3s ease;
-        }
     </style>
 </head>
+
 <body>
 <nav class="navbar">
     <h1>My App</h1>
@@ -201,53 +170,36 @@
     </ul>
 </nav>
 
-
 <!-- Popup -->
 <!--<div th:if="${param.success}" class="popup">-->
 <!--    <div class="alert alert-info">Your Feedback is been recorded.</div>-->
 <!--</div>-->
 
-
-<!-- form -->
 <div class="booking-form">
     <h1>Create Blog</h1>
     <hr>
-    <form th:action="@{/createBlog}" method="post" th:object="${blog}">
+    <form th:action="@{/update}" method="post" th:object="${blog}">
         <div class="form-group">
-            <label class="control-label" for="author">
-                Author </label>
-            <input id="author" class="form-control" th:field="*{author}" required autofocus="autofocus" />
-        </div>
-<!--        <div class="form-group">-->
-<!--            <label class="control-label" for="email">-->
-<!--                Email </label>-->
-<!--            <input id="email" class="form-control" th:field="*{}" required readonly="readonly"-->
-<!--                   autofocus="autofocus" />-->
-<!--        </div>-->
-        <div class="form-group">
-            <label class="control-label" for="rating">
-                Title </label>
-            <input id="Title" class="form-control" th:field="*{title}" required autofocus="autofocus" />
+            <label class="control-label" for="author">Author</label>
+            <input id="author" name="author" class="form-control" th:value="${blog.author}" readonly required />
         </div>
         <div class="form-group">
-            <label class="control-label" for="rating">
-                Topic </label>
-            <input id="rating" class="form-control" th:field="*{topic}" required autofocus="autofocus" />
+            <label class="control-label" for="title">Title</label>
+            <input id="title" name="title" class="form-control" th:value="${blog.title}" required />
         </div>
         <div class="form-group">
-            <label class="control-label" for="content">
-                Comment </label>
-            <textarea id="content" class="form-control" th:field="*{content}" required
-                      autofocus="autofocus"></textarea>
+            <label class="control-label" for="topic">Topic</label>
+            <input id="topic" name="topic" class="form-control" th:value="${blog.topic}" required />
         </div>
-
         <div class="form-group">
-            <button type="submit" class="button"> Submit </button>
+            <label class="control-label" for="content">Content</label>
+            <textarea id="content" name="content" class="form-control" th:text="${blog.content}" required></textarea>
         </div>
-
+        <div class="form-group">
+            <button type="submit" class="button">Submit</button>
+        </div>
     </form>
 </div>
-
 </body>
 
 </html>
