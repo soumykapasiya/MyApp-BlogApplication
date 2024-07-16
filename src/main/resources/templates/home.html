@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My App</title>
+    <link rel="stylesheet" href="/static/Css/home.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #fff;
+            color: #000;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .navbar h1 {
+            margin: 0;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-right: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 3px;
+            background-color: crimson;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease-in-out;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Heading */
+
+        h1{
+            text-align: center;
+        }
+
+        hr {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-bottom: 2px solid crimson;
+            width: 80%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Card */
+        .instruction-card {
+            max-width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(255, 213, 205);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        .one{
+            background-color: rgb(255, 213, 205);
+        }
+
+        .two{
+            background-color: rgb(205, 239, 255);
+        }
+
+        .three{
+            background-color: rgb(207, 255, 205);
+        }
+
+
+
+
+        .one button{
+            background-color: crimson;
+            border: 2px solid crimson;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .two button{
+            background-color: rgb(0, 0, 139);
+            border-radius: 0.5rem;
+            border: 2px solid rgb(0, 0, 139);
+            transition: background-color 0.3s ease;
+        }
+
+        .three button{
+            background-color: rgb(0, 100, 0);
+            border: 2px solid rgb(0, 100, 0);
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+
+
+        .one button:hover{
+            background-color: #fff;
+            color: crimson;
+            border: 2px solid crimson;
+        }
+
+        .two button:hover{
+            background-color: crimson;
+            color: rgb(0, 0, 139);
+            border: 2px solid rgb(0, 0, 139);
+        }
+
+        .three button:hover{
+            background-color: #fff;
+            color: rgb(0, 100, 0);
+            border: 2px solid rgb(0, 100, 0);
+        }
+
+
+
+
+        .instruction {
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .instruction-card-heading {
+            margin: 0;
+            text-align: center;
+        }
+
+        .navigation-btn {
+            font-family: poppins;
+            font-size: 17px;
+            width: 150px;
+            height: 40px;
+            padding: 0;
+            border: none;
+            border-radius: 0;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            background-color: crimson;
+            color: #ffffff;
+            cursor: pointer;
+            /* border: 2px solid crimson; */
+            transition: background-color 0.3s ease;
+        }
+
+        .navigation-btn1 {
+            font-family: poppins;
+            font-size: 17px;
+            width: 150px;
+            height: 40px;
+            padding: 0;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            background-color: #4686f6;
+            color: #ffffff;
+
+            cursor: pointer;
+            /* border: 2px solid crimson; */
+            transition: background-color 0.3s ease;
+        }
+
+        /* .navigation-btn:hover {
+            background-color: #fff;
+            color: crimson;
+            border: 2px solid crimson;
+        } */
+
+        .contact-section {
+            /* background-color: rgb(255, 174, 191); */
+            /* text-align: center; */
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+        .section-heading {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .contact-info p {
+            font-size: 16px;
+            color: #666;
+            margin: 10px 0;
+        }
+
+        .contact-info .social-media {
+            margin-top: 20px;
+        }
+
+        .contact-info .social-media ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        .contact-info .social-media ul li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .contact-info .social-media ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .contact-info .social-media ul li a:hover {
+            color: #007bff;
+        }
+
+        /* footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+        footer p {
+            margin: 5px 0;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+
+</head>
+<body>
+<!-- create navigation bar ( header) -->
+<nav class="navbar">
+    <h1>My App</h1>
+    <ul class="nav-links">
+        <li><a href="" th:href="@{/create}"><button class="navigation-btn1">Create</button></a></li>
+    </ul>
+</nav>
+
+<h1>All Blogs</h1>
+<hr />
+
+<div class="instruction-card one">
+    <h2 class="instruction-card-heading">Title</h2>
+    <p class="instruction">
+        <strong>Author:</strong> name
+    </p>
+    <p class="instruction">
+        <strong>Email:</strong> email
+    </p>
+    <p class="instruction">
+        <strong>Topic:</strong> Topic
+    </p>
+    <p class="instruction">
+        <strong>Content:</strong> Click on the "Book Ticket" button to access the ticket booking page.
+    </p>
+    <a href=""><button class="navigation-btn1">Update</button></a>
+    <a href=""><button class="navigation-btn">Delete</button></a>
+
+</div>
+
+<!-- Add more sections with detailed information for other help topics -->
+
+<footer>
+    <p>MyApp &copy; 2024. All rights reserved.</p>
+    <p>
+        Contact us:
+        <a href="mailto:info@indoremero.com">info@myApp.com</a>
+    </p>
+    <p>
+        Follow us:
+        <a href="https://www.facebook.com/IndoreMero" target="_blank">Facebook</a>|
+        <a href="https://twitter.com/IndoreMero" target="_blank">Twitter</a> |
+        <a href="https://www.instagram.com/indoremero/" target="_blank">Instagram</a>
+    </p>
+    <p>Address: 123, Indore (M. P.), India</p>
+</footer>
+</div>
+</body>
+</html>
